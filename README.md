@@ -43,7 +43,7 @@ Projeto_Validacao_Email/
 
 Faça o download do projeto ou clone o repositório:
 
-git clone https://github.com/seuusuario/validacao-email.git
+git clone https://github.com/RerissonHRS/Portif-lio-Acad-mico---Desenvolvimento-em-JavaScript
 
 
 Abra o arquivo index.html em qualquer navegador moderno.
