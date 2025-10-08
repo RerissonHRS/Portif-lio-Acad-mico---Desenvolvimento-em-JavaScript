@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validação de E-mail</title>
+  <style>
+    /* ====== Estilo geral ====== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+
+    /* ====== Cartão ====== */
+    .card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    h2 {
+      color: #1e3a8a;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+    }
+
+    /* ====== Campo de entrada ====== */
+    input[type="text"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 8px rgba(37, 99, 235, 0.3);
+    }
+
+    /* ====== Botão ====== */
+    button {
+      background: linear-gradient(90deg, #2563eb, #4f46e5);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #1e40af, #3730a3);
+      transform: scale(1.03);
+    }
+
+    /* ====== Mensagem ====== */
+    #mensagem {
+      margin-top: 15px;
+      font-size: 0.95rem;
+      min-height: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .erro {
+      color: #dc2626;
+    }
+
+    .sucesso {
+      color: #16a34a;
+    }
+
+    /* ====== Rodapé ====== */
+    footer {
+      position: fixed;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      text-align: center;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Validação de E-mail</h2>
+    <form id="formEmail">
+      <input type="text" id="email" placeholder="Digite seu e-mail">
+      <button type="submit">Validar E-mail</button>
+      <p id="mensagem"></p>
+    </form>
+  </div>
+
+  <footer>Desenvolvido por Rerisson H. R. da Silva</footer>
+
+  <script>
+    const form = document.getElementById('formEmail');
+    const email = document.getElementById('email');
+    const mensagem = document.getElementById('mensagem');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const emailValor = email.value.trim();
+      const padraoEmail = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+      if (emailValor === "") {
+        mensagem.textContent = "Por favor, preencha o campo de e-mail.";
+        mensagem.className = "erro";
+      } else if (!padraoEmail.test(emailValor)) {
+        mensagem.textContent = "E-mail inválido. O formato correto é: exemplo@dominio.com";
+        mensagem.className = "erro";
+      } else {
+        mensagem.textContent = "E-mail válido! Obrigado por preencher corretamente.";
+        mensagem.className = "sucesso";
+      }
+    });
+  </script>
+</body>
+</html>
